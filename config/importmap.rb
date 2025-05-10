@@ -1,6 +1,5 @@
 # Pin npm packages by running ./bin/importmap
 
-pin "application"
+pin "application", preload: true
 pin "bootstrap" # @5.3.6
 pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.8
-
