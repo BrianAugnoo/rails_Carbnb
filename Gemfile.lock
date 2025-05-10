@@ -419,7 +419,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
-  pg (~> 1.1)
+  pg
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
@@ -436,6 +436,9 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+
+RUBY VERSION
+   ruby 3.4.3p32
 
 BUNDLED WITH
    2.6.7
