@@ -1,31 +1,23 @@
-destroy_message = "destroy all existing "
+def create_instance(model, element_str, key)
+  puts "destroy all existing #{element_str}s"
+  model.destroy_all
+  puts "create" + element_str
+  element = model.create!(key)
+  puts "the #{element_str} are saved"
+  element
+end
 
 # cleaning and creating a User instance
-puts destroy_message + "users"
-User.destroy_all
-puts "create user brian"
-brian = User.create!(email: "brianaugnoo@gmail.com", password: "baugnoo", password_confirmation: "baugnoo")
-puts "the user are created"
+user = create_instance(User, "user", { email: "brianaugnoo@gmail.com", password: "baugnoo", password_confirmation: "baugnoo" })
 
 # cleaning and creating a Car instance
-puts destroy_message + "car"
-Car.destroy_all
-puts "create Brian cars"
 description = "very cool car, lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem"
-brian_car = Car.new(make: "peugeot", model: "i dont now", colour: "black", year: 2006, description: description)
-brian_car.user = brian
-result = brian_car.save ? "the car are saved" : "the car are not saved"
-puts result
+car = create_instance(Car, "car", { make: "peugeot", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: user[:id] })
 
 # cleaning and creating a Booking instance
-puts destroy_message + "bookings"
-Booking.destroy_all
-puts "create booking"
 start_date = Date.today + 1
 end_date = start_date + 3
-puts "#{start_date} #{end_date}"
-booking = Booking.new(start_date: start_date, end_date: end_date)
-booking.car = brian_car
-booking.user = brian
-result = booking.save ? "the booking are saved" : "the  booking are not saved"
-puts result
+booking = create_instance(Booking, "booking", { start_date: start_date, end_date: end_date, car_id: car[:id], user_id: user[:id] })
+
+# cleaning and creating a review instance
+review = create_instance(Review, "review", { rating: 4, comment: "cool car", car_id: car[:id], user_id: user[:id] })
