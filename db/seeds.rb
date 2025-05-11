@@ -8,7 +8,7 @@ def create_instance(model, element_str, key)
 end
 
 # cleaning and creating a User instance
-user = create_instance(User, "user", { email: "brianaugnoo@gmail.com", password: "baugnoo", password_confirmation: "baugnoo" })
+user = create_instance(User, "user", { email: "brianaugnoo@gmail.com", password: ENV["USER_PASSWORD"], password_confirmation: ENV["USER_PASSWORD"] })
 
 # cleaning and creating a Car instance
 description = "very cool car, lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem"
