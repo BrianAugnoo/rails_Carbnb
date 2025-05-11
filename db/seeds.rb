@@ -24,4 +24,4 @@ review = create_instance(Review, "review", { rating: 4, comment: "cool car", car
 
 # cleaning and creating a notification instance
 message = "Your car has been booked for #{booking[:start_date]} until #{booking[:end_date]}"
-notification = create_instance(Notification, "notification", { message: message, user_id: user[:id], booking_id: booking[:id]})
+notification = create_instance(Notification, "notification", { message: message, user_id: user[:id], booking_id: booking[:id] })
