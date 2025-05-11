@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :car
   belongs_to :user
+  has_many :notifications, dependent: :destroy
   validates :start_date, :end_date, presence: true
   validate :valid_start_date
   validate :valid_end_date
