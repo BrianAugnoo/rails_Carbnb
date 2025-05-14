@@ -37,6 +37,6 @@ class Booking < ApplicationRecord
 
   # the booking must not start or end during an existing booking
   def invalid_date(date, booking)
-    date >= booking[:start_date] && date <= booking[:end_date]
+    date >= booking[:start_date] && date <= booking[:end_date] && booking[:status] === true
   end
 end
