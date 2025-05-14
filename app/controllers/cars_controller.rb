@@ -1,7 +1,7 @@
 class CarsController < ApplicationController
   # This method call the view index
   def index
-    #TODO : ryan
+    # TODO : ryan
   end
 
   def new
