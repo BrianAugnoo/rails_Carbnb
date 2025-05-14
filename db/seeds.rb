@@ -8,9 +8,9 @@ def create_instance(model, element_str, key, destroy = true)
 end
 
 # cleaning and creating a User instance
-owner = create_instance(User, "user", { email: "owner@gmail.com", password: ENV["USER_PASSWORD"], password_confirmation: ENV["USER_PASSWORD"] })
+owner = create_instance(User, "user", { email: "owner@gmail.com", password: ENV["USER_PASSWORD"], password_confirmation: ENV["USER_PASSWORD"], user_name: "owner" })
 puts "owner created"
-renter = create_instance(User, "user", { email: "renter@gmail.com", password: ENV["USER_PASSWORD"], password_confirmation: ENV["USER_PASSWORD"] }, false)
+renter = create_instance(User, "user", { email: "renter@gmail.com", password: ENV["USER_PASSWORD"], password_confirmation: ENV["USER_PASSWORD"], user_name: "renter" }, false)
 puts "renter created"
 
 # cleaning and creating a Car instance
