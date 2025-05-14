@@ -26,5 +26,5 @@ booking = create_instance(Booking, "booking", { start_date: start_date, end_date
 review = create_instance(Review, "review", { rating: 4, comment: "cool car", car_id: car[:id], user_id: renter[:id] })
 
 # cleaning and creating a notification instance
-message = "Your car has been booked for #{booking[:start_date]} until #{booking[:end_date]}"
+message = "Your car has been booked for #{booking[:start_date]} until #{booking[:end_date]} by #{booking.user[:user_name]}"
 notification = create_instance(Notification, "notification", { message: message, user_id: owner[:id], booking_id: booking[:id] })
