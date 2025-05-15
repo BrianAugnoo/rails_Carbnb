@@ -1,2 +1,8 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+  <p>welcome to home page</p>
+  <%= link_to "create new car", new_car_path(@car) %>
+  <% @cars.each do |car| %>
+    <h2>Car Make: <%= car[:make] %></h2>
+    <%= link_to "show the car", car_path(car) %>
+  <% end %>
+</div>
