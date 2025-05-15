@@ -16,7 +16,10 @@ puts "renter created"
 # cleaning and creating a Car instance
 description = "very cool car, lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem"
 car = create_instance(Car, "car", { make: "peugeot", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] })
-
+create_instance(Car, "car", { make: "toyota", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] }, false)
+create_instance(Car, "car", { make: "tesla", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] }, false)
+create_instance(Car, "car", { make: "ferari", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] }, false)
+create_instance(Car, "car", { make: "nissan", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] }, false)
 # cleaning and creating a Booking instance
 start_date = Date.today + 1
 end_date = start_date + 3
