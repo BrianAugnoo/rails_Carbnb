@@ -6,3 +6,23 @@
     <%= link_to "show the car", car_path(car) %>
   <% end %>
 </div>
+
+
+<div class="container text-center">
+  <% @cars.each do |car| %>
+  <div class="row">
+    <div class="col">
+      <h2>Car Make: <%= car[:make] %></h2>
+      <%= link_to "show the car", car_path(car) %>
+    </div>
+  </div>
+</div>
+
+
+<% @cars.each do |car| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Car Make: <%= car[:make] %></h5>
+              <%= link_to "Show the Car", car_path(car), class: "btn btn-outline-secondary" %>
+            </div>
+          </div>
