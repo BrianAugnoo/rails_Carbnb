@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>test</h1>
 <% if user_signed_in? %>
   <div class="container mt-5">
@@ -65,3 +66,13 @@
   <%= link_to "login", new_user_session_path(@user), class: "btn btn-primary" %>
   <%= link_to "sign_up",  new_user_registration_path(@user), class: "btn btn-primary" %>
 <% end %>
+=======
+<div class="container">
+  <p>welcome to home page</p>
+  <%= link_to "create new car", new_car_path(@car) %>
+  <% @cars.each do |car| %>
+    <h2>Car Make: <%= car[:make] %></h2>
+    <%= link_to "show the car", car_path(car) %>
+  <% end %>
+</div>
+>>>>>>> 7bb2299e6e96bd02e0f344ba94578cd5152891ee

@@ -46,6 +46,7 @@ end
 
 puts "Creating bookings..."
 
+<<<<<<< HEAD
 Car.all.each_with_index do |car, index|
   next if index.even?
   Booking.create!(
@@ -58,6 +59,19 @@ Car.all.each_with_index do |car, index|
 end
 
 puts "Creating reviews..."
+=======
+# cleaning and creating a Car instance
+description = "very cool car, lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem"
+car = create_instance(Car, "car", { make: "peugeot", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] })
+create_instance(Car, "car", { make: "toyota", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] }, false)
+create_instance(Car, "car", { make: "tesla", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] }, false)
+create_instance(Car, "car", { make: "ferari", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] }, false)
+create_instance(Car, "car", { make: "nissan", model: "serie-rails", colour: "black", year: 2006, description: description, user_id: owner[:id] }, false)
+# cleaning and creating a Booking instance
+start_date = Date.today + 1
+end_date = start_date + 3
+booking = create_instance(Booking, "booking", { start_date: start_date, end_date: end_date, car_id: car[:id], user_id: renter[:id], status: true })
+>>>>>>> 7bb2299e6e96bd02e0f344ba94578cd5152891ee
 
 Car.limit(5).each do |car|
   Review.create!(
