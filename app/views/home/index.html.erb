@@ -1,3 +1,72 @@
+<<<<<<< HEAD
+<h1>test</h1>
+<% if user_signed_in? %>
+  <div class="container mt-5">
+    <p>-----------------------------------------------------------------------------------------------</p>
+    <% @users.each do |user| %>
+      <div>
+        <h2><%= user[:user_name] %></h2>
+        <ul>
+          <li>email: <%= user[:email] %></li>
+          <li>ID: <%= user[:id] %></li>
+          <li>password: <%= user[:password] %></li>
+        </ul>
+
+        <h3><%= user[:user_name] %> Cars</h3>
+        <% user.cars.each do |car| %>
+          <ul>
+            <li>make: <%= car[:make] %></li>
+            <li>model: <%= car[:model] %></li>
+            <li>colour: <%= car[:colour] %></li>
+            <li>year: <%= car[:year] %></li>
+            <li>description: <%= car[:description] %></li>
+            <li>ID: <%= car[:id] %></li>
+          </ul>
+
+          <h3>car booking</h3>
+          <% booking = car.bookings.last %>
+          <% if booking %>
+            <ul>
+              <li>start_date: <%= booking[:start_date] %></li>
+              <li>end_date: <%= booking[:end_date] %></li>
+              <li>status: <%= booking[:status] %></li>
+              <li>ID: <%= booking[:id].to_s %></li>
+              <li>User: <%= booking.user[:user_name] %></li>
+            </ul>
+          <% end %>
+
+          <h3>car reviews</h3>
+          <% review = car.reviews.last %>
+          <% if review %>
+            <ul>
+              <li>ID: <%= review[:id] %></li>
+              <li>rating: <%= review[:rating] %></li>
+              <li>comment: <%= review[:comment] %></li>
+              <li>by: <%= review.user[:user_name] %></li>
+            </ul>
+          <% end %>
+        <% end %>
+
+        <h3>User Notifications:</h3>
+        <% notification = user.notifications.last %>
+        <% if notification %>
+          <ul>
+            <li>to: <%= notification.user[:user_name] %></li>
+            <li>message: <%= notification[:message] %></li>
+            <li>read: <%= notification[:read] %></li>
+            <li>Id: <%= notification[:id] %></li>
+          </ul>
+        <% end %>
+      </div>
+      <p>-----------------------------------------------------------------------------------------------</p>
+    <% end %>
+  </div>
+
+<% else %>
+  <%= link_to "login", new_user_session_path(@user), class: "btn btn-primary" %>
+  <%= link_to "sign_up",  new_user_registration_path(@user), class: "btn btn-primary" %>
+<% end %>
+=======
 <div class="container">
   <p>welcome to home page</p>
   <%= link_to "create new car", new_car_path(@car) %>
@@ -6,3 +75,4 @@
     <%= link_to "show the car", car_path(car) %>
   <% end %>
 </div>
+>>>>>>> 7bb2299e6e96bd02e0f344ba94578cd5152891ee
