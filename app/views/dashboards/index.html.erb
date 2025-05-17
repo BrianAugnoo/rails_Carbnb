@@ -1,5 +1,21 @@
 <h1>All Car Bookings</h1>
 
-<% @cars.each do |car| %>
-<p><%= car[:make] %></p>
-<% end %>
+<div class="container mt-4">
+  <div class="row">
+    <% @cars.each do |car| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= car[:make] %> - <%= car[:model] %></h5>
+            <p class="card-text"><%= car[:description] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% @user_bookings.each do |booking| %>
+    <h5 class="card-title"><%= booking[:start_date] %> - <%= booking[:end_date] %></h5>
+    <h5 class="card-title"><%= Booked by[:booking.user] %> - <%= booking[:end_date] %></h5>
+    <% end %>
+  </div>
+</div>
