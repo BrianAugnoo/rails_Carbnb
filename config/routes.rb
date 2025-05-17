@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resources :reviews, except: [ :new, :create ]
   resources :notifications, except: [ :new, :create ]
+  resources :dashboards, only: [ :index ]
 end
