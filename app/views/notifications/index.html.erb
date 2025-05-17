@@ -1,0 +1,14 @@
+<h1>Notifications</h1>
+
+<% if @notifications.any? %>
+  <ul>
+    <% @notifications.each do |notification| %>
+      <li class="<%= 'unread' unless notification.read? %>">
+        <%= link_to notification.title, notification_path(notification) %>
+        <small><%= time_ago_in_words(notification.created_at) %> ago</small>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No notifications.</p>
+<% end %>
