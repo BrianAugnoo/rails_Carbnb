@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @empty_car = Car.new
+    @cars = Car.all
     @user = User.new
   end
 end

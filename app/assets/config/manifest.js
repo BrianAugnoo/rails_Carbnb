@@ -4,4 +4,6 @@
 //= link_tree ../../../vendor/javascript .js
 //= link popper.js
 //= link bootstrap.min.js
- //= link application.css
+ //= link application.scss
+  //= link logo.png
+  //= link application.css

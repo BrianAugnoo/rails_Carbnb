@@ -1,7 +1,28 @@
-<p>welcome to show</p>
-<ul>
-  <li>make: <%= @car[:make] %></li>
-  <li>colour: <%= @car[:colour] %></li>
-  <li>description: <%= @car[:description] %></li>
-  <li>owner: <%= @car.user[:user_name] %></li>
-</ul>
+<div class="container py-5">
+  <div class="card mb-4 shadow-sm">
+    <div class="row g-0">
+      <!-- Image Section -->
+      <div class="col-md-4">
+        <%= image_tag "logo.png", class: "img-fluid rounded-start w-100 h-100 object-fit-cover" %>
+      </div>
+
+      <!-- Content Section -->
+      <div class="col-md-8">
+        <div class="card-body">
+          <h3 class="card-title mb-3"><%= @car.make %></h3>
+          <p class="card-text text-muted mb-1"><strong>Colour:</strong> <%= @car.colour %></p>
+          <p class="card-text mb-3"><strong>Description:</strong> <%= @car.description %></p>
+          <hr>
+          <p class="card-text mb-2"><strong>Owner:</strong> <%= @car.user.user_name %></p>
+          <p class="card-text text-secondary">Posted on <%= @car.created_at.strftime("%B %d, %Y") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="d-flex gap-3">
+    <%= link_to "book now", new_car_booking_path(@car), class: "btn btn-primary" %>
+    <%= link_to "Back to Cars", root_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
