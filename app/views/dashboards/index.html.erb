@@ -15,7 +15,6 @@
 
     <% @user_bookings.each do |booking| %>
     <h5 class="card-title"><%= booking[:start_date] %> - <%= booking[:end_date] %></h5>
-    <h5 class="card-title"><%= Booked by[:booking.user] %> - <%= booking[:end_date] %></h5>
     <% end %>
   </div>
 </div>
