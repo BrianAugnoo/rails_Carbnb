@@ -1,8 +1,26 @@
-<div class="container">
-  <p>welcome to home page</p>
-  <%= link_to "create new car", new_car_path(@car) %>
-  <% @cars.each do |car| %>
-    <h2>Car Make: <%= car[:make] %></h2>
-    <%= link_to "show the car", car_path(car) %>
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  <div class="container mt-5">
+    <div class="d-flex justify-content-end mb-4 pe-4">
+      <%= link_to "Create new post", new_car_path(@empty_car), class:"btn btn-primary" %>
+    </div>
+    <div class="row">
+      <% @cars.each do |car| %>
+        <div class="col-3  d-flex align-items-stretch">
+          <div class="card mb-3" style="width: 18rem;">
+            <%= image_tag('logo.png', class: "card-img-top", alt: "#{car[:make]} image") %>
+            <div class="card-body">
+              <h5 class="card-title">model: <%= car[:model] %></h5>
+              <p class="bold">make: <%= car[:make] %></p>
+              <p class="card-text"><%= car[:description].scan(/\b\w+\b/)[0, 5].join(" ") %>...</p>
+              <%= link_to "show", car_path(car) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+<% else %>
+  <%= link_to "login", new_user_session_path(@user), class: "btn btn-primary" %>
+  <%= link_to "sign_up",  new_user_registration_path(@user), class: "btn btn-primary" %>
+<% end %>
