@@ -1,5 +1,3 @@
-
-
 <% if user_signed_in? %>
   <div class="container mt-5">
     <div class="d-flex justify-content-end mb-4 pe-4">
@@ -26,15 +24,4 @@
   <%= link_to "login", new_user_session_path(@user), class: "btn btn-primary" %>
   <%= link_to "sign_up",  new_user_registration_path(@user), class: "btn btn-primary" %>
 <% end %>
-<div class="container">
-  <p>welcome to home page</p>
-  <%= link_to "create new car", new_car_path(@car) %>
-  <% @cars.each do |car| %>
-  <div class="row">
-    <div class="col">
-      <h2>Car Make: <%= car[:make] %></h2>
-      <%= link_to "show the car", car_path(car) %>
-  <% end %>
-    </div>
-  </div>
-</div>
+
