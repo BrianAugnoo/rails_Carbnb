@@ -1,33 +1,39 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(<%= asset_path('car.png') %>);">
-  <div class="container">
-    <h1>Carbnb brings <strong>dream cars</strong> to <strong>every driver</strong>!</h1>
-    <p>Discover and book the perfect ride for every occasion, anywhere in the world.</p>
-  </div>
-</div>
-
 <% if user_signed_in? %>
-  <div class="container mt-5">
-    <div class="d-flex justify-content-end mb-4 pe-4">
-      <%= link_to "Create new post", new_car_path(@empty_car), class:"btn btn-primary" %>
-    </div>
-    <div class="row">
-      <% @cars.each do |car| %>
-        <div class="col-3  d-flex align-items-stretch">
-          <div class="card mb-3" style="width: 18rem;">
-            <%= image_tag('logo.png', class: "card-img-top", alt: "#{car[:make]} image") %>
-            <div class="card-body">
-              <h5 class="card-title">model: <%= car[:model] %></h5>
-              <p class="bold">make: <%= car[:make] %></p>
-              <p class="card-text"><%= car[:description].scan(/\b\w+\b/)[0, 5].join(" ") %>...</p>
-              <%= link_to "show", car_path(car) %>
+  <div class="full-page-background text-white">
+    <div class="overlay"></div>
+
+    <div class="content container py-5 position-relative">
+      <div class="d-flex justify-content-end mb-4 pe-4">
+        <%= link_to "Create new post", new_car_path(@empty_car), class:"btn btn-primary" %>
+      </div>
+
+      <div class="banner text-center mb-4">
+        <h1 class="display-4 fw-bold">Available Cars – Find your next ride!</h1>
+      </div>
+
+      <div class="alert alert-info text-center mb-4" role="alert">
+        Available Cars – Find your next ride!
+      </div>
+
+      <div class="row">
+        <% @cars.each do |car| %>
+          <div class="col-3 d-flex align-items-stretch">
+            <div class="card mb-3" style="width: 18rem;">
+              <%= image_tag('logo.png', class: "card-img-top", alt: "#{car[:make]} image") %>
+              <div class="card-body">
+                <h5 class="card-title">model: <%= car[:model] %></h5>
+                <p class="bold">make: <%= car[:make] %></p>
+                <p class="card-text"><%= car[:description].scan(/\b\w+\b/)[0, 5].join(" ") %>...</p>
+                <%= link_to "show", car_path(car) %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 
 <% else %>
   <%= link_to "login", new_user_session_path(@user), class: "btn btn-primary" %>
-  <%= link_to "sign_up",  new_user_registration_path(@user), class: "btn btn-primary" %>
+  <%= link_to "sign_up", new_user_registration_path(@user), class: "btn btn-primary" %>
 <% end %>

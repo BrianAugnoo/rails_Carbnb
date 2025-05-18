@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   end
 
     def destroy
-    #@notification = Notification.find(params[:id])
+    @notification = Notification.find(params[:id])
     if @notification.user == current_user
       @notification.destroy
       flash[:notice] = "Notification deleted."
