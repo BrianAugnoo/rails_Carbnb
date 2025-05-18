@@ -4,4 +4,7 @@ class HomeController < ApplicationController
     @cars = Car.all
     @user = User.new
   end
+
+  def account
+  end
 end

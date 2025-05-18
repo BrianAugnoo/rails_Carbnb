@@ -22,7 +22,7 @@
 
     <div class="mb-3">
       <%= f.label :year, class: "form-label" %>
-      <%= f.date_field :year, class: "form-control" %>
+      <%= f.select :year, (1900..Date.today.year).to_a.reverse, { prompt: "Select Year" }, class: "form-select" %>
     </div>
 
     <%= f.submit "Submit", class: "btn btn-primary" %>

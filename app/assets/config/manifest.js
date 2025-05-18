@@ -7,3 +7,4 @@
  //= link application.scss
   //= link logo.png
   //= link application.css
+//= link car.png
