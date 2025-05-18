@@ -2,3 +2,44 @@
 .bold {
   font-weight: bold;
 }
+
+.banner {
+  background: none;         /* No background */
+  padding: 0;               /* Remove padding if any */
+  margin-bottom: 1.5rem;    /* Keep space below */
+}
+
+.banner h1 {
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* keep for readability */
+  margin: 0;
+}
+
+.full-page-background {
+  background-image: url('/assets/your-background-image.png'); /* adjust path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+}
+
+.full-page-background .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* darkens the background */
+  z-index: 0;
+}
+
+.full-page-background .content {
+  position: relative;
+  z-index: 1;
+}
+
+.full-page-background h1 {
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
