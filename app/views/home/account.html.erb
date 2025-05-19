@@ -1,4 +1,7 @@
 <div class="container">
+  <p>Email: <%= current_user[:email] %></p>
+  <p>User Name: <%= current_user[:user_name] %></p>
   <%= link_to "edit password", edit_user_registration_path, class: "btn btn-primary" %>
-  <%= link_to "change user_name" %>
+  <%= link_to "change user_name", new_user_name_path, class: "btn btn-primary" %>
+  <%= link_to "delete my account", cancel_user_registration_path, class: "btn btn-danger" %>
 </div>

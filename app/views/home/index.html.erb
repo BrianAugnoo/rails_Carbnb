@@ -7,14 +7,7 @@
         <%= link_to "Create new post", new_car_path(@empty_car), class:"btn btn-primary" %>
       </div>
 
-      <div class="banner text-center mb-4">
-        <h1 class="display-4 fw-bold">Available Cars – Find your next ride!</h1>
-      </div>
-
-      <div class="alert alert-info text-center mb-4" role="alert">
-        Available Cars – Find your next ride!
-      </div>
-
+      
       <div class="row">
         <% @cars.each do |car| %>
           <div class="col-3 d-flex align-items-stretch">

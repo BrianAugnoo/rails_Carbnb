@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Change username</h1>
+  <%= form_with url: user_name_index_path, method: :post do |f| %>
+  <%= f.label :user_name, "new username" %>
+  <%= f.text_field :user_name %>
+  <%= f.submit "confirm" %>
+  <% end %>
+</div>
