@@ -5,9 +5,14 @@
     <% @cars.each do |car| %>
       <div class="col-md-4 mb-4">
         <div class="card h-100">
+          <%= image_tag("logo.png", alt: "car image", class: "card-img-top") %>
           <div class="card-body">
             <h5 class="card-title"><%= car[:make] %> - <%= car[:model] %></h5>
             <p class="card-text"><%= car[:description] %></p>
+          </div>
+          <div class="card-footer">
+            <%= link_to "edit", edit_car_path(car), class: "btn btn-primary" %>
+            <%= button_to "delete", car_path(car), method: :delete, class: "btn btn-danger", data: {confirm: "are you sure?"} %>
           </div>
         </div>
       </div>
@@ -15,6 +20,10 @@
 
     <% @user_bookings.each do |booking| %>
     <h5 class="card-title"><%= booking[:start_date] %> - <%= booking[:end_date] %></h5>
+    <p class="card-text">car:<%= booking.car[:make] %>- <%= booking.car[:model] %></p>
+    <p class="card-text">booked by:<%= booking.user[:user_name] %></p>
+    <%= button_to "accept", accept_booking_path(booking), method: :patch, class:"btn btn-primary"%>
+    <%= button_to "reject", booking_path(booking), method: :delete, class:"btn btn-danger", data: {confirm: "are you sure"} %>
     <% end %>
   </div>
 </div>
