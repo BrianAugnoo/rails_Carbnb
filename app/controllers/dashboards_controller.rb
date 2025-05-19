@@ -4,12 +4,10 @@ class DashboardsController < ApplicationController
     @bookings = Booking.all
     @user_bookings = []
 
-    @bookings.each do |booking|
-      user_booking = false
-      @cars.each do |user_car|
-        user_booking = true if booking.car = user_car
+    @cars.each do |car|
+      car.bookings.each do |booking|
+          @user_bookings << booking
       end
-      @user_bookings << booking
     end
   end
 end
