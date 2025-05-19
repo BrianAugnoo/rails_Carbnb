@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "user_name/new"
   get "home/index"
   devise_for :users
   get "up" => "rails/health#show", as: :rails_health_check
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
   resources :reviews, except: [ :new, :create ]
   resources :notifications, except: [ :new, :create ]
   resources :dashboards, only: [ :index ]
+  resources :user_name, only: [ :new, :create ]
 end
