@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">New Booking</h4>
+        </div>
+        <div class="card-body">
+          <%= form_with model: [@car, @booking], local: true do |f| %>
+            <div class="mb-3">
+              <%= f.label :start_date, "Start Date", class: "form-label" %>
+              <%= f.date_field :start_date, class: "form-control" %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :end_date, "End Date", class: "form-label" %>
+              <%= f.date_field :end_date, class: "form-control" %>
+            </div>
+
+            <div class="d-grid">
+              <%= f.submit "Book Now", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
