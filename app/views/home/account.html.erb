@@ -1,7 +1,18 @@
-<div class="container">
-  <p>Email: <%= current_user[:email] %></p>
-  <p>User Name: <%= current_user[:user_name] %></p>
-  <%= link_to "edit password", edit_user_registration_path, class: "btn btn-primary" %>
-  <%= link_to "change user_name", new_user_name_path, class: "btn btn-primary" %>
-  <%= link_to "delete my account", cancel_user_registration_path, class: "btn btn-danger" %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg p-4">
+        <div class="card-body text-center">
+          <h4 class="card-title mb-4">User Profile</h4>
+          <p class="mb-2"><strong>Email:</strong> <%= current_user[:email] %></p>
+          <p class="mb-4"><strong>User Name:</strong> <%= current_user[:user_name] %></p>
+          <div class="d-flex justify-content-center gap-2 mb-3">
+            <%= link_to "Edit Password", edit_user_registration_path, class: "btn btn-outline-primary" %>
+            <%= link_to "Change User Name", new_user_name_path, class: "btn btn-outline-primary" %>
+          </div>
+          <%= button_to "Cancel My Account", registration_path(User), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger w-100" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
