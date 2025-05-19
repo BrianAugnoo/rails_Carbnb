@@ -20,6 +20,27 @@ class CarsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @car.user = current_user
+    if @car.update(set_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if @car.destroy
+      redirect_to dashboards_path, status: :see_other
+    else
+      flash[:alert] = "Car could not be deleted"
+      redirect_to dashboards_path, status: :unprocessable_entity
+    end
+  end
+
   private
   def set_car
     @car = Car.find(params[:id])
