@@ -15,6 +15,17 @@
         Available Cars – Find your next ride!
       </div>
 
+      <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
+        <%= form_with url: cars_path, method: :get, local: true, class: "search" do %>
+          <div class="search-form-control form-group">
+            <%= text_field_tag "search[query]", params.dig(:search, :query), class: "form-control string required", id: "search_query" %>
+            <button name="button" type="submit" class="btn btn-flat">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+        <% end %>
+      </form>
+
       <div class="row">
         <% @cars.each do |car| %>
           <div class="col-3 d-flex align-items-stretch">

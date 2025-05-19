@@ -43,3 +43,35 @@
   color: #fff;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }
+
+
+.search-form-control {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.search-form-control .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 30px;
+}
+
+.search-form-control .btn:hover,
+.search-form-control .btn:focus {
+  color: #dd1e1ed0;
+  background-color: #eb07071c;
+}
+
+.search-form-control .form-control {
+  height: 3.5rem;
+  width: 98.6%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #E7E7E7;
+}
+
+.search-form-control .form-control:focus {
+  border: 1px solid #dd1e1ed0;
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
