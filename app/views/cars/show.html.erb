@@ -28,3 +28,51 @@
     <%= link_to "Back to Cars", root_path, class: "btn btn-outline-secondary" %>
   </div>
 </div>
+
+<!-- Add Review Section -->
+<div class="mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Reviews</h4>
+
+    <% unless @car.reviews.exists?(user: current_user) %>
+      <%= link_to "Add Review", new_car_review_path(@car), class: "btn btn-sm btn-success" %>
+    <% end %>
+  </div>
+
+  <% if @car.reviews.any? %>
+    <div class="list-group">
+      <% @car.reviews.each do |review| %>
+        <div class="list-group-item list-group-item-action mb-3 shadow-sm rounded">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+              <strong><%= review.user.user_name %></strong>
+              <small class="text-muted">• <%= review.created_at.strftime("%b %d, %Y") %></small>
+            </div>
+            <% if review.user == current_user %>
+              <div>
+                <%= link_to "Edit", edit_car_review_path(@car, review), class: "btn btn-sm btn-outline-primary me-1" %>
+                <%= link_to "Delete", car_review_path(@car, review),
+                            method: :delete,
+                            data: { confirm: "Are you sure you want to delete this review?" },
+                            class: "btn btn-sm btn-outline-danger" %>
+              </div>
+            <% end %>
+          </div>
+
+          <p class="mb-1"><%= review.comment %></p>
+          <div>
+            <%# Display stars %>
+            <% review.rating.times do %>
+              <i class="bi bi-star-fill text-warning"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="bi bi-star text-warning"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-muted">No reviews yet. Be the first to add one!</p>
+  <% end %>
+</div>
