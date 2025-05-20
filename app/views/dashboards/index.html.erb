@@ -12,7 +12,7 @@
           </div>
           <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
             <%= link_to "Edit", edit_car_path(car), class: "btn btn-sm btn-outline-primary" %>
-            <%= button_to "Delete", car_path(car), method: :delete, data: { confirm: "Are you sure you want to delete this car?" }, class: "btn btn-sm btn-outline-danger" %>
+            <%= button_to "Delete", car_path(car), method: :delete, data: { data_confirm: "Are you sure you want to delete this car?" }, class: "btn btn-sm btn-outline-danger" %>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
           </div>
           <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
             <%= button_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-sm btn-success" %>
-            <%= button_to "Reject", booking_path(booking), method: :delete, data: { confirm: "Are you sure you want to reject this booking?" }, class: "btn btn-sm btn-danger" %>
+            <%= button_to "Reject", booking_path(booking), method: :delete, data: { data_confirm: "Are you sure you want to reject this booking?" }, class: "btn btn-sm btn-danger" %>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
             <p class="card-text">status: <%= booking[:status] ? "confirmed" : "in progress" %></p>
           </div>
           <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
-            <%= button_to "Cancel", booking_path(booking), method: :delete, data: { confirm: "Are you sure you want to cancel this booking?" }, class: "btn btn-sm btn-danger" %>
+            <%= button_to "Cancel", booking_path(booking), method: :delete, data: { data_confirm: "Are you sure you want to cancel this booking?" }, class: "btn btn-sm btn-danger" %>
             <%= link_to "edit",  edit_booking_path(booking), class: "btn btn-sm btn-primary" %>
           </div>
         </div>
