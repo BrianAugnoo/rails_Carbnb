@@ -7,9 +7,10 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(set_params)
-    @booking.car = Car.find(params[:car_id])
+    @car = Car.find(params[:car_id])
+    @booking.car = @car
     @booking.user = current_user
-    if @booking.save
+    if @booking.save && @car.user != current_user
       redirect_to car_path(@booking.car), notice: "Booking was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -23,6 +24,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    @booking.update(status: false)
     if @booking.update(set_params)
       redirect_to dashboards_path, notice: "Booking was successfully updated."
     else
