@@ -22,7 +22,9 @@
 
   <!-- Action Buttons -->
   <div class="d-flex gap-3">
-    <%= link_to "book now", new_car_booking_path(@car), class: "btn btn-primary" %>
+    <% unless current_user == @car.user %>
+      <%= link_to "book now", new_car_booking_path(@car), class: "btn btn-primary" %>
+    <% end %>
     <%= link_to "Back to Cars", root_path, class: "btn btn-outline-secondary" %>
   </div>
 </div>
