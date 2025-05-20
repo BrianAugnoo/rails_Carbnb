@@ -48,6 +48,7 @@
             <h5 class="card-title">Date: <%= booking[:start_date] %> - <%= booking[:end_date] %></h5>
             <% car = booking.car %>
             <p class="card-text">Car: <%= link_to "#{car[:make]}-#{car[:model]}", car_path(car)%></p>
+            <p class="card-text">status: <%= booking[:status] ? "confirmed" : "in progress" %></p>
           </div>
           <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
             <%= button_to "Cancel", booking_path(booking), method: :delete, data: { confirm: "Are you sure you want to cancel this booking?" }, class: "btn btn-sm btn-danger" %>
