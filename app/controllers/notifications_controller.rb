@@ -25,10 +25,14 @@ class NotificationsController < ApplicationController
     if @notification.user == current_user
       @notification.destroy
       flash[:notice] = "Notification deleted."
-    else
-      flash[:alert] = "You are not authorized to delete this notification."
       redirect_to notifications_path
     end
+  end
+
+  def mark_as_read
+    @notification = Notification.find(params[:id])
+    @notification.update(read: true)
+    redirect_to notifications_path
   end
 
   private
