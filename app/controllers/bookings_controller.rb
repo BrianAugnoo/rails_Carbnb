@@ -34,10 +34,11 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    booked = @booking[:status]
     if @booking.destroy
-      redirect_to dashboards_path, notice: "Booking was successfully deleted."
+      render json: { status: :ok, message: "succes", booked: booked }
     else
-      redirect_to dashboards_path, status: :unprocessable_entity
+      render json: { status: :unprocessable_entity, message: "error" }
     end
   end
 

@@ -55,8 +55,12 @@
             button_to "Cancel",
             booking_path(booking),
             method: :delete,
-            data: { turbo_confirm: "Are you sure you want to cancel this booking?",
-            create_notification_target: "userDelete", action: "click->create-notification#userCancel"},
+            data: {
+            turbo_confirm: "Are you sure you want to cancel this booking?",
+            create_notification_target: "userDelete",
+            action: "click->create-notification#destroy",
+            type: "cancel",
+            },
             class: "btn btn-sm btn-danger",
             "booking-id": "#{booking[:id]}"
             %>

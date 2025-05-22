@@ -3,11 +3,16 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="create-notification"
 export default class extends Controller {
   static targets = ["userDelete"]
-  userCancel(event) {
+  async destroy(event) {
     event.preventDefault()
+    const type = this.userDeleteTarget.dataset.type
+    const bookingId = this.userDeleteTarget.getAttribute("booking-id")
     if (confirm("Are you sure you want to cancel?")) {
-      const bookingId = this.userDeleteTarget.getAttribute("booking-id")
-      this.delete_request(`/bookings/${bookingId}`, JSON.stringify({ id: bookingId }))
+      const response = await this.delete_request(`/bookings/${bookingId}`, JSON.stringify({ id: bookingId }))
+      console.log(response.message)
+      if (response.message === "succes") {
+        console.log("Booking deleted successfully")
+      }
     }
   }
 
@@ -16,23 +21,19 @@ export default class extends Controller {
     return token
   }
 
-  delete_request(action, body){
-    fetch(action, {
-      method: "DELETE",
-      headers: {
-        "X-CSRF-Token": this.csrf_token(),
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: body
-    })
-    .then(response => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        throw new Error("Network response was not ok")
-      }
-    })
-    .then(data => data)
+  async delete_request(action, body) {
+  const response = await fetch(action, {
+    method: "DELETE",
+    headers: {
+      "X-CSRF-Token": this.csrf_token(),
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    body: body
+  });
+
+  const data = await response.json();
+  console.log(data);
+  return data;
   }
 }
