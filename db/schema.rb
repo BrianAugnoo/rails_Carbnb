@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_14_162448) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_22_155008) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,10 +42,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_162448) do
     t.text "message"
     t.boolean "read", default: false
     t.bigint "user_id", null: false
-    t.bigint "booking_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_notifications_on_booking_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -76,7 +74,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_14_162448) do
   add_foreign_key "bookings", "cars"
   add_foreign_key "bookings", "users"
   add_foreign_key "cars", "users"
-  add_foreign_key "notifications", "bookings"
   add_foreign_key "notifications", "users"
   add_foreign_key "reviews", "cars"
   add_foreign_key "reviews", "users"

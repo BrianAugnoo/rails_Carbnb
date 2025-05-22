@@ -42,7 +42,7 @@
   <h2 class="mt-5 mb-4">My booking</h2>
   <div class="row gy-4">
     <% @my_bookings.each do |booking| %>
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" id="<%= booking[:id] %>">
         <div class="card h-100 shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Date: <%= booking[:start_date] %> - <%= booking[:end_date] %></h5>
@@ -56,10 +56,10 @@
             booking_path(booking),
             method: :delete,
             data: {
-            turbo_confirm: "Are you sure you want to cancel this booking?",
             create_notification_target: "userDelete",
             action: "click->create-notification#destroy",
-            type: "cancel",
+            status: booking[:status],
+            date: "#{booking[:start_date]} - #{booking[:end_date]}",
             },
             class: "btn btn-sm btn-danger",
             "booking-id": "#{booking[:id]}"

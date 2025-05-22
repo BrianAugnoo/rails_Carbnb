@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       patch :accept
     end
+    resources :notifications, only: [ :create ]
   end
   resources :reviews, except: [ :new, :create ]
   resources :notifications, except: [ :new, :create ]
