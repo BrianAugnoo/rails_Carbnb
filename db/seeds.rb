@@ -73,12 +73,10 @@ puts "Creating notifications..."
 Booking.all.each do |booking|
   Notification.create!(
     user: booking.car.user,
-    booking: booking,
     message: "New booking request for your car from #{booking.user.user_name}"
   )
   Notification.create!(
     user: booking.user,
-    booking: booking,
     message: booking.status ? "Your booking has been accepted." : "Your booking has been rejected."
   )
 end
