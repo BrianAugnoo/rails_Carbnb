@@ -1,4 +1,5 @@
- require 'faker'
+require 'faker'
+require 'open-uri'
 
 puts "Resetting database..."
 
@@ -33,15 +34,17 @@ visitor = User.create!(
 
 puts "Creating cars..."
 
-20.times do |i|
-  Car.create!(
-    make: ["Toyota", "Tesla", "Nissan", "Ford", "BMW"].sample,
+car_images = URI.open("https://res.cloudinary.com/dygzxvimx/image/upload/v1748010088/how-to-create-a-car-newblogcover_mkhah3.png")
+10.times do |i|
+  car = Car.create!(
+    make: [ "Toyota", "Tesla", "Nissan", "Ford", "BMW" ].sample,
     model: "Model#{i + 1}",
-    colour: ["Red", "Black", "White", "Blue"].sample,
+    colour: [ "Red", "Black", "White", "Blue" ].sample,
     year: 2015 + i,
     description: "#{Faker::Vehicle.standard_specs.join(", ")} — lorem ipsum dolor sit amet consectetur adipiscing elit.",
     user: owner
   )
+  car.photo.attach(io: car_images, filename: "car_#{i + 1}.png", content_type: "image/png")
 end
 
 puts "Creating bookings..."

@@ -25,6 +25,11 @@
       <%= f.select :year, (1900..Date.today.year).to_a.reverse, { prompt: "Select Year" }, class: "form-select" %>
     </div>
 
+    <div class="mb-3">
+      <%= f.label :photos, class: "form-label" %>
+      <%= f.file_field :photo, required: true, class: "form-control" %>
+    </div>
+
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>

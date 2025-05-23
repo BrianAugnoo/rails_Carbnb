@@ -26,7 +26,7 @@
         <% @cars.each do |car| %>
           <div class="col-3 d-flex align-items-stretch">
             <div class="card mb-4" style="width: 19rem;">
-              <%= image_tag('logo.png', class: "card-img-top", alt: "#{car[:make]} image") %>
+              <%= cl_image_tag car.photo.key, class: "card-img-top", alt: "#{car[:make]} image" %>
               <div class="card-body">
                 <h5 class="card-title">model: <%= car[:model] %></h5>
                 <p class="bold">make: <%= car[:make] %></p>

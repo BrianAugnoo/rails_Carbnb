@@ -3,7 +3,7 @@
     <div class="row g-0">
       <!-- Image Section -->
       <div class="col-md-4">
-        <%= image_tag "logo.png", class: "img-fluid rounded-start w-100 h-100 object-fit-cover" %>
+        <%= cl_image_tag  @car.photo.key, class: "img-fluid rounded-start w-100 h-100 object-fit-cover" %>
       </div>
 
       <!-- Content Section -->
