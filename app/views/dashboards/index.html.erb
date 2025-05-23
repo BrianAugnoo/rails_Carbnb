@@ -33,7 +33,19 @@
           </div>
           <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
             <% unless booking[:status] %>
-              <%= button_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-sm btn-success" %>
+              <%=
+              button_to "Accept",
+              accept_booking_path(booking),
+              method: :patch,
+              data: {
+              create_notification_target: "userAccept",
+              action: "click->create-notification#accept",
+              status: booking[:status],
+              date: "#{booking[:start_date]} - #{booking[:end_date]}",
+              },
+              class: "btn btn-sm btn-success",
+              "booking-id": "#{booking[:id]}"
+              %>
             <% end %>
             <%=
             button_to "Reject",

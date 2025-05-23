@@ -11,9 +11,11 @@ class BookingsController < ApplicationController
     @booking.car = @car
     @booking.user = current_user
     if @booking.save && @car.user != current_user
-      redirect_to car_path(@booking.car), notice: "Booking was successfully created."
+      respond_to do |format|
+        format.json
+      end
     else
-      render :new, status: :unprocessable_entity
+      render json: { status: :unprocessable_entity, message: "Error creating booking.", errors: @booking.errors.full_messages, success: false }
     end
   end
 
