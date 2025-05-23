@@ -8,6 +8,8 @@ class CarsController < ApplicationController
 
   def show
     @booking = Booking.new
+    # RF: Added line below for Reviews
+    @reviews = @car.reviews.includes(:user)
   end
 
   def create

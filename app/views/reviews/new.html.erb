@@ -1,0 +1,52 @@
+<div class="container py-5">
+  <div class="card shadow-sm p-4">
+    <h2 class="mb-4">Add Review for <%= @car.make %></h2>
+
+    <%= form_with model: [@car, @review], local: true do |form| %>
+      <div class="mb-3">
+        <%= form.label :comment, class: "form-label" %>
+        <%= form.text_area :comment, class: "form-control", rows: 4, required: true %>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Rating</label>
+        <div class="star-rating d-flex flex-row-reverse justify-content-end">
+          <% 5.downto(1) do |i| %>
+            <input type="radio" id="star-<%= i %>" name="review[rating]" value="<%= i %>" <%= 'checked' if @review.rating == i %>/>
+            <label for="star-<%= i %>" class="star">&#9733;</label>
+          <% end %>
+        </div>
+      </div>
+
+      <%= form.submit "Submit Review", class: "btn btn-primary" %>
+      <%= link_to "Cancel", car_path(@car), class: "btn btn-outline-secondary ms-2" %>
+    <% end %>
+  </div>
+</div>
+
+<!-- Optional: inline star rating CSS if not already loaded globally -->
+<style>
+  .star-rating {
+    direction: rtl;
+    font-size: 1.5rem;
+  }
+
+  .star-rating input[type="radio"] {
+    display: none;
+  }
+
+  .star-rating label {
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .star-rating input[type="radio"]:checked ~ label {
+    color: #ffc107;
+  }
+
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color: #ffc107;
+  }
+</style>
