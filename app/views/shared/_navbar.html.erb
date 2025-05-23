@@ -19,7 +19,13 @@
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            <% if !current_user.profile_picture.attached? %>
+              <%= image_tag "https://res.cloudinary.com/dygzxvimx/image/upload/v1748008089/istockphoto-1316947194-612x612_qnjpke.jpg",
+              class: "rounded-circle", size: "40x40", alt: "Avatar", style: "object-fit: cover;" %>
+            <% else %>
+              <%= cl_image_tag current_user.profile_picture.key,
+              class: "rounded-circle", size: "40x40", alt: "Avatar", style: "object-fit: cover;" %>
+            <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My Activity", dashboards_path, class: "dropdown-item" %>

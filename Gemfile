@@ -50,6 +50,7 @@ gem "sassc-rails"
 gem "devise"
 gem "sprockets-rails"
 gem "faker"
+gem "cloudinary"
 
 group :development, :test do
   gem "dotenv-rails"

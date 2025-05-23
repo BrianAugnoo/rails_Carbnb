@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_one_attached :profile_picture
   validates :user_name, presence: true, allow_blank: false, uniqueness: { message: "this name has already been taken" }
 end
