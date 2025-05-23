@@ -23,16 +23,31 @@
   <h2 class="mt-5 mb-4">All Bookings for my car</h2>
   <div class="row gy-4">
     <% @user_bookings.each do |booking| %>
-      <div class="col-sm-6 col-md-4">
+      <div class="col-sm-6 col-md-4" id="<%= booking[:id] %>">
         <div class="card h-100 shadow-sm">
           <div class="card-body">
             <h5 class="card-title">Booking: <%= booking.car.make %> <small class="text-muted"><%= booking.car.model %></small></h5>
             <p class="card-text mb-1"><strong>Dates:</strong> <%= booking.start_date.strftime('%b %d, %Y') %> &ndash; <%= booking.end_date.strftime('%b %d, %Y') %></p>
-            <p class="card-text mb-3"><strong>Booked by:</strong> <%= booking.user.user_name %></p>
+            <p class="card-text mb-1"><strong>Booked by:</strong> <%= booking.user.user_name %></p>
+            <p class="card-text mb-3"><strong>status: </strong><%= booking[:status] ? "confirmed" : "in progress" %></p>
           </div>
           <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
-            <%= button_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-sm btn-success" %>
-            <%= button_to "Reject", booking_path(booking), method: :delete, data: { data_confirm: "Are you sure you want to reject this booking?" }, class: "btn btn-sm btn-danger" %>
+            <% unless booking[:status] %>
+              <%= button_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-sm btn-success" %>
+            <% end %>
+            <%=
+            button_to "Reject",
+            booking_path(booking),
+            method: :delete,
+            data: {
+            create_notification_target: "userDelete",
+            action: "click->create-notification#destroy",
+            status: booking[:status],
+            date: "#{booking[:start_date]} - #{booking[:end_date]}",
+            },
+            class: "btn btn-sm btn-danger",
+            "booking-id": "#{booking[:id]}"
+            %>
           </div>
         </div>
       </div>

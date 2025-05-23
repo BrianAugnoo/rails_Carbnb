@@ -7,7 +7,7 @@ class DashboardsController < ApplicationController
 
     @cars.each do |car|
       car.bookings.each do |booking|
-          @user_bookings << booking if booking[:status] == false
+          @user_bookings << booking
       end
     end
   end

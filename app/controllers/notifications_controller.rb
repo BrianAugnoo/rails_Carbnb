@@ -9,7 +9,7 @@ class NotificationsController < ApplicationController
     @notification.user = @booking.user
     @owner = @booking.car.user
     if @notification.save
-      if @booking.status == true
+      if @booking[:status]
         @owner_notification = Notification.new(set_params)
         @owner_notification.user = @owner
         @owner_notification.save
