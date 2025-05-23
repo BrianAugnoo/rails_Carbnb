@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_car
-  before_action :set_review, only: [:edit, :update, :destroy]
-  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :set_car, except: [:destroy]
+  before_action :set_review, only: [:edit, :update]
+  before_action :authorize_user!, only: [:edit, :update]
 
   def new
     @review = @car.reviews.build
@@ -31,8 +31,12 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review.destroy
-    redirect_to car_path(@car), notice: "Review deleted successfully.", status: :see_other
+    @review = Review.find(params[:id])
+    if @review.user == current_user
+      @car = @review.car
+      @review.destroy
+      redirect_to car_path(@car), notice: "Review deleted successfully.", status: :see_other
+    end
   end
 
   private
