@@ -3,6 +3,17 @@
   font-weight: bold;
 }
 
+.my-custom-btn {
+  background-color: #004cffed; /* Example orange */
+  color: white;
+  border-color: #ff660000;
+}
+.my-custom-btn:hover {
+  background-color: #004cffcf;
+  border-color: #e65c0000;
+}
+
+
 .banner {
   background: none;         /* No background */
   padding: 0;               /* Remove padding if any */
@@ -54,7 +65,7 @@
   position: absolute;
   top: 8px;
   bottom: 8px;
-  right: 30px;
+  right: 17px;
 }
 
 .search-form-control .btn:hover,
@@ -65,7 +76,7 @@
 
 .search-form-control .form-control {
   height: 3.5rem;
-  width: 98.6%;
+  width: 99.8%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
 }

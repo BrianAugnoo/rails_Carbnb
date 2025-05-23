@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get "account" => "home#account", as: :account
   resources :cars do
     resources :bookings, only: [ :new, :create ]
-    resources :reviews, only: [ :new, :create ]
+    #Ryan added update and destroy in reviews resources below
+    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
   end
   resources :bookings, except: [ :new, :create ] do
     member do
