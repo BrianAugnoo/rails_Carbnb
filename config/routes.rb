@@ -14,9 +14,14 @@ Rails.application.routes.draw do
     member do
       patch :accept
     end
+    resources :notifications, only: [ :create ]
   end
   resources :reviews, except: [ :new, :create ]
-  resources :notifications, except: [ :new, :create ]
+  resources :notifications, except: [ :new, :create ] do
+    member do
+      post :mark_as_read
+    end
+  end
   resources :dashboards, only: [ :index ]
   resources :user_name, only: [ :new, :create ]
 end

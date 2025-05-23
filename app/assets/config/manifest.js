@@ -8,3 +8,4 @@
   //= link logo.png
   //= link application.css
 //= link car.png
+ //= link rails-ujs.js

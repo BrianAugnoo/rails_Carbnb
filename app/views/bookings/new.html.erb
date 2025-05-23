@@ -6,15 +6,15 @@
           <h4 class="mb-0">New Booking</h4>
         </div>
         <div class="card-body">
-          <%= form_with model: [@car, @booking], local: true do |f| %>
+          <%= form_with model: [@car, @booking], data: { controller: "create-notification", create_notification_target: "userCreate", action: "submit->create-notification#create" } do |f| %>
             <div class="mb-3">
               <%= f.label :start_date, "Start Date", class: "form-label" %>
-              <%= f.date_field :start_date, class: "form-control" %>
+              <%= f.date_field :start_date, class: "form-control", required: true %>
             </div>
 
             <div class="mb-3">
               <%= f.label :end_date, "End Date", class: "form-label" %>
-              <%= f.date_field :end_date, class: "form-control" %>
+              <%= f.date_field :end_date, class: "form-control", required: true %>
             </div>
 
             <div class="d-grid">
